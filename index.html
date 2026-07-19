@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Đầu Tiên Của Tôi</title>
+    <style>
+        /* CSS: Dùng để làm đẹp cho trang web */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #message {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HTML: Cấu trúc nội dung của trang web -->
+    <header>
+        <h1>Chào Mừng Đến Với Trang Web Của Tôi!</h1>
+        <p>Học lập trình web thật đơn giản và thú vị.</p>
+    </header>
+
+    <main>
+        <h2>Giới thiệu ngắn</h2>
+        <p>Đây là trang web đầu tiên được tạo bằng cách kết hợp HTML, CSS và JavaScript. Bạn có thể chỉnh sửa nội dung trong file này để biến nó thành trang web của riêng mình.</p>
+        
+        <h2>Tính năng tương tác</h2>
+        <p>Hãy thử nhấn vào nút bên dưới để xem điều kỳ diệu từ JavaScript:</p>
+        
+        <!-- Nút bấm kích hoạt hàm JavaScript -->
+        <button onclick="chaoMung()">Bấm vào đây!</button>
+        <p id="message"></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Trang Web Của Tôi. Được tạo với tâm huyết.</p>
+    </footer>
+
+    <!-- JavaScript: Tạo tính năng tương tác hành vi -->
+    <script>
+        function chaoMung() {
+            // Thay đổi nội dung của thẻ có id="message" khi bấm nút
+            document.getElementById("message").innerText = "Cảm ơn bạn đã ghé thăm trang web! Chúc bạn một ngày tốt lành! ✨";
+        }
+    </script>
+
+</body>
+</html>
