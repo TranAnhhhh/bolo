@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Đăng nhập hoặc đăng ký</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 20px;
+        }
+
+        .container {
+            display: flex;
+            max-width: 980px;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Phần giới thiệu bên trái */
+        .left-content {
+            max-width: 500px;
+            margin-bottom: 80px;
+        }
+
+        .left-content h1 {
+            color: #1877f2;
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: -2px;
+            margin-bottom: -10px;
+        }
+
+        .left-content p {
+            font-size: 1.7rem;
+            line-height: 2rem;
+            color: #1c1e21;
+            font-weight: normal;
+        }
+
+        /* Form đăng nhập bên phải */
+        .right-content {
+            width: 396px;
+        }
+
+        .login-box {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 17px;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+
+        .btn-login {
+            width: 100%;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+
+        .btn-login:hover {
+            background-color: #166fe5;
+        }
+
+        .forgot-link {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dadde1;
+            margin-bottom: 20px;
+        }
+
+        .btn-register {
+            background-color: #42b72a;
+            color: white;
+            border: none;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            line-height: 48px;
+            display: inline-block;
+        }
+
+        .btn-register:hover {
+            background-color: #36a420;
+        }
+
+        .sub-text {
+            margin-top: 28px;
+            font-size: 14px;
+            color: #1c1e21;
+        }
+
+        .sub-text a {
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+        }
+
+        .sub-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Định hình lại giao diện khi màn hình nhỏ (Điện thoại) */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                margin-top: 40px;
+            }
+            .left-content {
+                text-align: center;
+                margin-bottom: 20px;
+                max-width: 100%;
+            }
+            .left-content h1 {
+                font-size: 3rem;
+            }
+            .left-content p {
+                font-size: 1.2rem;
+                line-height: 1.5rem;
+            }
+            .right-content {
+                width: 100%;
+                max-width: 396px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Bên Trái: Logo và Khẩu hiệu -->
+        <div class="left-content">
+            <h1>facebook</h1>
+            <p>Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của bạn.</p>
+        </div>
+
+        <!-- Bên Phải: Khung Đăng Nhập -->
+        <div class="right-content">
+            <div class="login-box">
+                <form onsubmit="handleLogin(event)">
+                    <input type="text" id="email" class="form-input" placeholder="Email hoặc số điện thoại" required>
+                    <input type="password" id="password" class="form-input" placeholder="Mật khẩu" required>
+                    <button type="submit" class="btn-login">Đăng nhập</button>
+                    <a href="#" class="forgot-link">Quên mật khẩu?</a>
+                    <hr>
+                    <button type="button" class="btn-register" onclick="alert('Tính năng đăng ký đang bảo trì!')">Tạo tài khoản mới</button>
+                </form>
+            </div>
+            <p class="sub-text"><a href="#">Tạo Trang</a> dành cho người nổi tiếng, thương hiệu hoặc doanh nghiệp.</p>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Ngăn trình duyệt tải lại trang
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+            
+            // Hiển thị thông báo giả lập để kiểm tra hoạt động
+            alert(`Tài khoản nhập vào:\n- Email/SĐT: ${email}\n- Mật khẩu: ${pass}`);
+        }
+    </script>
+
+</body>
+</html>
