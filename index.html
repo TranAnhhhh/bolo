@@ -3,371 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiệm Sinh Tố Đồng Giá 25K</title>
+    <title>Facebook - Đăng nhập hoặc đăng ký</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #fcf8f2;
-            color: #333;
-            padding-bottom: 60px;
-        }
-
-        header {
-            background-color: #27ae60;
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            background: #219653;
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 0 20px;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Menu sinh tố */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .smoothie-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-align: center;
-            padding: 1.5rem 1rem;
-            border: 1px solid #eee;
-            transition: transform 0.2s;
-        }
-
-        .smoothie-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .smoothie-icon {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .smoothie-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-        }
-
-        .smoothie-price {
-            color: #e74c3c;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        button.btn-add {
-            background-color: #27ae60;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            transition: background 0.2s;
-        }
-
-        button.btn-add:hover {
-            background-color: #219653;
-        }
-
-        /* Giỏ hàng & Form Đặt hàng */
-        .order-sidebar {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-
-        .order-sidebar h3 {
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #27ae60;
-            padding-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-
-        .cart-item {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        .total-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #e74c3c;
-            margin: 1.5rem 0;
-            text-align: right;
-        }
-
-        /* Form nhập thông tin */
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.3rem;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group textarea {
+            max-width: 980px;
             width: 100%;
-            padding: 0.6rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        button.btn-submit {
-            background-color: #e67e22;
+        /* Phần giới thiệu bên trái */
+        .left-content {
+            max-width: 500px;
+            margin-bottom: 80px;
+        }
+
+        .left-content h1 {
+            color: #1877f2;
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: -2px;
+            margin-bottom: -10px;
+        }
+
+        .left-content p {
+            font-size: 1.7rem;
+            line-height: 2rem;
+            color: #1c1e21;
+            font-weight: normal;
+        }
+
+        /* Form đăng nhập bên phải */
+        .right-content {
+            width: 396px;
+        }
+
+        .login-box {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 17px;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+
+        .btn-login {
+            width: 100%;
+            background-color: #1877f2;
             color: white;
             border: none;
-            padding: 0.8rem;
+            padding: 12px;
+            font-size: 20px;
+            font-weight: bold;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
+            margin-bottom: 16px;
         }
 
-        button.btn-submit:hover {
-            background-color: #d35400;
+        .btn-login:hover {
+            background-color: #166fe5;
         }
 
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #2c3e50;
+        .forgot-link {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dadde1;
+            margin-bottom: 20px;
+        }
+
+        .btn-register {
+            background-color: #42b72a;
             color: white;
-            margin-top: 3rem;
+            border: none;
+            padding: 0 16px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            line-height: 48px;
+            display: inline-block;
+        }
+
+        .btn-register:hover {
+            background-color: #36a420;
+        }
+
+        .sub-text {
+            margin-top: 28px;
+            font-size: 14px;
+            color: #1c1e21;
+        }
+
+        .sub-text a {
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+        }
+
+        .sub-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Định hình lại giao diện khi màn hình nhỏ (Điện thoại) */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                margin-top: 40px;
+            }
+            .left-content {
+                text-align: center;
+                margin-bottom: 20px;
+                max-width: 100%;
+            }
+            .left-content h1 {
+                font-size: 3rem;
+            }
+            .left-content p {
+                font-size: 1.2rem;
+                line-height: 1.5rem;
+            }
+            .right-content {
+                width: 100%;
+                max-width: 396px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>🥤 TIỆM SINH TỐ FRESH & CHILL</h1>
-        <p>Đồng giá hoàn hảo: 25.000đ / Ly</p>
-    </header>
-
     <div class="container">
-        <!-- BÊN TRÁI: DANH SÁCH SINH TỐ -->
-        <div>
-            <h2 style="margin-bottom: 1.5rem; color: #2c3e50;">Chọn món yêu thích của bạn:</h2>
-            <div class="menu-grid">
-                <!-- Món 1 -->
-                <div class="smoothie-card">
-                    <div class="smoothie-icon">🥑</div>
-                    <div class="smoothie-name">Sinh Tố Bơ</div>
-                    <div class="smoothie-price">25.000đ</div>
-                    <button class="btn-add" onclick="addToCart('Sinh Tố Bơ')">Thêm vào đơn</button>
-                </div>
-                <!-- Món 2 -->
-                <div class="smoothie-card">
-                    <div class="smoothie-icon">🍓</div>
-                    <div class="smoothie-name">Sinh Tố Dâu Tây</div>
-                    <div class="smoothie-price">25.000đ</div>
-                    <button class="btn-add" onclick="addToCart('Sinh Tố Dâu Tây')">Thêm vào đơn</button>
-                </div>
-                <!-- Món 3 -->
-                <div class="smoothie-card">
-                    <div class="smoothie-icon">🥭</div>
-                    <div class="smoothie-name">Sinh Tố Xoài</div>
-                    <div class="smoothie-price">25.000đ</div>
-                    <button class="btn-add" onclick="addToCart('Sinh Tố Xoài')">Thêm vào đơn</button>
-                </div>
-                <!-- Món 4 -->
-                <div class="smoothie-card">
-                    <div class="smoothie-icon">🍌</div>
-                    <div class="smoothie-name">Sinh Tố Chuối Bơ Đậu Phộng</div>
-                    <div class="smoothie-price">25.000đ</div>
-                    <button class="btn-add" onclick="addToCart('Sinh Tố Chuối Bơ Đậu Phộng')">Thêm vào đơn</button>
-                </div>
-                <!-- Món 5 -->
-                <div class="smoothie-card">
-                    <div class="smoothie-icon">🥥</div>
-                    <div class="smoothie-name">Sinh Tố Dừa Cacao</div>
-                    <div class="smoothie-price">25.000đ</div>
-                    <button class="btn-add" onclick="addToCart('Sinh Tố Dừa Cacao')">Thêm vào đơn</button>
-                </div>
-                <!-- Món 6 -->
-                <div class="smoothie-card">
-                    <div class="smoothie-icon">🍍</div>
-                    <div class="smoothie-name">Sinh Tố Thơm (Dứa)</div>
-                    <div class="smoothie-price">25.000đ</div>
-                    <button class="btn-add" onclick="addToCart('Sinh Tố Thơm (Dứa)')">Thêm vào đơn</button>
-                </div>
-            </div>
+        <!-- Bên Trái: Logo và Khẩu hiệu -->
+        <div class="left-content">
+            <h1>facebook</h1>
+            <p>Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của bạn.</p>
         </div>
 
-        <!-- BÊN PHẢI: GIỎ HÀNG & FORM ĐẶT HÀNG -->
-        <div class="order-sidebar">
-            <h3>🛒 Đơn hàng của bạn</h3>
-            <div id="cart-list">
-                <p style="color: #888; font-style: italic;">Chưa có món nào được chọn.</p>
+        <!-- Bên Phải: Khung Đăng Nhập -->
+        <div class="right-content">
+            <div class="login-box">
+                <form onsubmit="handleLogin(event)">
+                    <input type="text" id="email" class="form-input" placeholder="Email hoặc số điện thoại" required>
+                    <input type="password" id="password" class="form-input" placeholder="Mật khẩu" required>
+                    <button type="submit" class="btn-login">Đăng nhập</button>
+                    <a href="#" class="forgot-link">Quên mật khẩu?</a>
+                    <hr>
+                    <button type="button" class="btn-register" onclick="alert('Tính năng đăng ký đang bảo trì!')">Tạo tài khoản mới</button>
+                </form>
             </div>
-            
-            <div class="total-price">Tổng cộng: <span id="total-amount">0</span>đ</div>
-
-            <h3>📍 Thông tin giao hàng</h3>
-            <form id="order-form" onsubmit="checkout(event)">
-                <div class="form-group">
-                    <label for="fullname">Họ và tên *</label>
-                    <input type="text" id="fullname" placeholder="Nhập tên của bạn" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Số điện thoại *</label>
-                    <input type="tel" id="phone" placeholder="Nhập số điện thoại nhận hàng" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Địa chỉ nhận hàng *</label>
-                    <textarea id="address" rows="3" placeholder="Số nhà, tên đường, phường/xã..." required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">🚀 ĐẶT HÀNG NGAY</button>
-            </form>
+            <p class="sub-text"><a href="#">Tạo Trang</a> dành cho người nổi tiếng, thương hiệu hoặc doanh nghiệp.</p>
         </div>
     </div>
 
-    <footer>
-        <p>© 2026 Tiệm Sinh Tố Fresh & Chill - Đồng Giá 25K</p>
-    </footer>
-
-    <!-- XỬ LÝ ĐẶT HÀNG BẰNG JAVASCRIPT -->
     <script>
-        // Lưu trữ giỏ hàng dưới dạng Object { 'Tên món': Số lượng }
-        let cart = {};
-        const PRICE_PER_ITEM = 25000;
-
-        function addToCart(itemName) {
-            if (cart[itemName]) {
-                cart[itemName] += 1;
-            } else {
-                cart[itemName] = 1;
-            }
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const cartListNode = document.getElementById('cart-list');
-            const totalAmountNode = document.getElementById('total-amount');
+        function handleLogin(event) {
+            event.preventDefault(); // Ngăn trình duyệt tải lại trang
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
             
-            // Xóa danh sách cũ
-            cartListNode.innerHTML = '';
-            
-            let totalItems = 0;
-            let hasItems = false;
-
-            for (let item in cart) {
-                if (cart[item] > 0) {
-                    hasItems = true;
-                    totalItems += cart[item];
-                    
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'cart-item';
-                    itemDiv.innerHTML = `
-                        <span>${item} <strong>x${cart[item]}</strong></span>
-                        <span>${(cart[item] * PRICE_PER_ITEM).toLocaleString('vi-VN')}đ</span>
-                    `;
-                    cartListNode.appendChild(itemDiv);
-                }
-            }
-
-            if (!hasItems) {
-                cartListNode.innerHTML = '<p style="color: #888; font-style: italic;">Chưa có món nào được chọn.</p>';
-            }
-
-            // Tính tổng tiền
-            const totalMoney = totalItems * PRICE_PER_ITEM;
-            totalAmountNode.innerText = totalMoney.toLocaleString('vi-VN');
-        }
-
-        function checkout(event) {
-            event.preventDefault(); // Ngăn trang web tải lại khi submit form
-
-            // Kiểm tra xem giỏ hàng có trống không
-            let totalItems = 0;
-            let itemDetails = "";
-            for (let item in cart) {
-                totalItems += cart[item];
-                if (cart[item] > 0) {
-                    itemDetails += `- ${item}: ${cart[item]} ly\n`;
-                }
-            }
-
-            if (totalItems === 0) {
-                alert("⚠️ Vui lòng chọn ít nhất 1 ly sinh tố trước khi đặt hàng!");
-                return;
-            }
-
-            // Lấy thông tin từ form
-            const name = document.getElementById('fullname').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
-            const totalMoney = (totalItems * PRICE_PER_ITEM).toLocaleString('vi-VN');
-
-            // Tạo nội dung thông báo đặt hàng thành công
-            const summary = `🎉 ĐẶT HÀNG THÀNH CÔNG!\n\n` +
-                            `Khách hàng: ${name}\n` +
-                            `Số điện thoại: ${phone}\n` +
-                            `Địa chỉ: ${address}\n\n` +
-                            `Chi tiết đơn hàng:\n${itemDetails}` +
-                            `Tổng tiền: ${totalMoney}đ\n\n` +
-                            `Cảm ơn bạn đã ủng hộ tiệm! Shipper sẽ liên hệ bạn ngay.`;
-
-            alert(summary);
-
-            // Reset lại form và giỏ hàng sau khi đặt thành công
-            cart = {};
-            document.getElementById('order-form').reset();
-            updateCartUI();
+            // Hiển thị thông báo giả lập để kiểm tra hoạt động
+            alert(`Tài khoản nhập vào:\n- Email/SĐT: ${email}\n- Mật khẩu: ${pass}`);
         }
     </script>
+
 </body>
 </html>
