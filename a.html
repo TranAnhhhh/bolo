@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mạng xã hội demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <!-- Thanh điều hướng phía trên (Header/Navbar) -->
+  <header class="navbar">
+    <div class="logo">MySocial</div>
+    <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+    <div class="user-menu">Trang cá nhân</div>
+  </header>
+
+  <!-- Bố cục chính (Main Layout) -->
+  <div class="container">
+    
+    <!-- Cột bên trái: Menu điều hướng -->
+    <aside class="sidebar-left">
+      <ul>
+        <li>Bảng tin</li>
+        <li>Bạn bè</li>
+        <li>Nhóm</li>
+        <li>Cài đặt</li>
+      </ul>
+    </aside>
+
+    <!-- Cột giữa: Bảng tin chính -->
+    <main class="feed">
+      
+      <!-- Khung tạo bài viết mới -->
+      <div class="create-post-card">
+        <textarea placeholder="Bạn đang nghĩ gì?"></textarea>
+        <button class="btn-post">Đăng bài</button>
+      </div>
+
+      <!-- Danh sách bài viết mẫu -->
+      <div class="post-card">
+        <div class="post-header">
+          <strong>Nguyễn Văn A</strong>
+          <span class="post-time">2 giờ trước</span>
+        </div>
+        <div class="post-content">
+          Hôm nay thời tiết đẹp quá!
+        </div>
+        <div class="post-actions">
+          <button>Thích</button>
+          <button>Bình luận</button>
+          <button>Chia sẻ</button>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
