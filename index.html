@@ -1,194 +1,61 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mô phỏng Nhập điểm vnEdu</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .header {
-            border-bottom: 2px solid #0056b3;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            color: #0056b3;
-        }
-        .header h2 {
-            margin: 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-            font-size: 14px;
-        }
-        .th-heso1 { background-color: #17a2b8; }
-        .th-heso2 { background-color: #ffc107; color: #333; }
-        .th-heso3 { background-color: #dc3545; }
-        
-        input[type="number"] {
-            width: 60px;
-            padding: 5px;
-            text-align: center;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="number"]:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-        .dtb {
-            font-weight: bold;
-            color: #28a745;
-            font-size: 16px;
-        }
-        .btn-container {
-            text-align: right;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #0056b3;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        button:hover {
-            background-color: #004085;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mạng xã hội demo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <h2>HỆ THỐNG QUẢN LÝ HỌC TẬP - MÔ PHỎNG NHẬP ĐIỂM</h2>
-        <p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">Lớp: 10A1 | Môn: Toán học | Học kỳ: I</p>
-    </div>
+  <!-- Thanh điều hướng phía trên (Header/Navbar) -->
+  <header class="navbar">
+    <div class="logo">MySocial</div>
+    <input type="text" class="search-bar" placeholder="Tìm kiếm...">
+    <div class="user-menu">Trang cá nhân</div>
+  </header>
 
-    <table>
-        <thead>
-            <tr>
-                <th rowspan="2" style="width: 5%;">STT</th>
-                <th rowspan="2" style="width: 20%;">Họ và Tên</th>
-                <th colspan="3" class="th-heso1">Kiểm tra thường xuyên (ĐHS1)</th>
-                <th class="th-heso2">Giữa kỳ (ĐHS2)</th>
-                <th class="th-heso3">Cuối kỳ (ĐHS3)</th>
-                <th rowspan="2" style="width: 10%; background-color: #28a745;">ĐTB mông</th>
-            </tr>
-            <tr>
-                <th class="th-heso1">Miệng</th>
-                <th class="th-heso1">15 Phút I</th>
-                <th class="th-heso1">15 Phút II</th>
-                <th class="th-heso2">ĐGK</th>
-                <th class="th-heso3">ĐCK</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Học sinh 1 -->
-            <tr class="student-row">
-                <td>1</td>
-                <td style="text-align: left;">Nguyễn Văn An</td>
-                <td><input type="number" class="diem m" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem 15-1" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem 15-2" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem gk" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem ck" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td class="dtb">-</td>
-            </tr>
-            <!-- Học sinh 2 -->
-            <tr class="student-row">
-                <td>2</td>
-                <td style="text-align: left;">Trần Thị Bình</td>
-                <td><input type="number" class="diem m" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem 15-1" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem 15-2" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem gk" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem ck" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td class="dtb">-</td>
-            </tr>
-            <!-- Học sinh 3 -->
-            <tr class="student-row">
-                <td>3</td>
-                <td style="text-align: left;">Lê Hoàng Cường</td>
-                <td><input type="number" class="diem m" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem 15-1" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem 15-2" min="0" max="10" step="0.1" oninput="tiemDiem(this)" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem gk" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td><input type="number" class="diem ck" min="0" max="10" step="0.1" oninput="tinhDiem(this)"></td>
-                <td class="dtb">-</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="btn-container">
-        <button onclick="luuDiem()">Lưu dữ liệu</button>
-    </div>
-</div>
-
-<script>
-function tinhDiem(input) {
-    // Lấy dòng hiện tại của học sinh
-    const row = input.closest('.student-row');
+  <!-- Bố cục chính (Main Layout) -->
+  <div class="container">
     
-    // Lấy giá trị của các cột điểm
-    const m = parseFloat(row.querySelector('.m').value) || 0;
-    const d15_1 = parseFloat(row.querySelector('.15-1').value) || 0;
-    const d15_2 = parseFloat(row.querySelector('.15-2').value) || 0;
-    const gk = parseFloat(row.querySelector('.gk').value) || 0;
-    const ck = parseFloat(row.querySelector('.ck').value) || 0;
+    <!-- Cột bên trái: Menu điều hướng -->
+    <aside class="sidebar-left">
+      <ul>
+        <li>Bảng tin</li>
+        <li>Bạn bè</li>
+        <li>Nhóm</li>
+        <li>Cài đặt</li>
+      </ul>
+    </aside>
 
-    // Đếm số cột điểm hệ số 1 đã nhập để tính trung bình chính xác
-    let tongHeSo = 0;
-    let tongDiemHS1 = 0;
+    <!-- Cột giữa: Bảng tin chính -->
+    <main class="feed">
+      
+      <!-- Khung tạo bài viết mới -->
+      <div class="create-post-card">
+        <textarea placeholder="Bạn đang nghĩ gì?"></textarea>
+        <button class="btn-post">Đăng bài</button>
+      </div>
 
-    if(row.querySelector('.m').value !== "") { tongDiemHS1 += m; tongHeSo += 1; }
-    if(row.querySelector('.15-1').value !== "") { tongDiemHS1 += d15_1; tongHeSo += 1; }
-    if(row.querySelector('.15-2').value !== "") { tongDiemHS1 += d15_2; tongHeSo += 1; }
-    
-    // Cộng thêm hệ số cho Giữa kỳ (HS2) và Cuối kỳ (HS3) nếu đã nhập
-    if(row.querySelector('.gk').value !== "") { tongDiemHS1 += (gk * 2); tongHeSo += 2; }
-    if(row.querySelector('.ck').value !== "") { tongDiemHS1 += (ck * 3); tongHeSo += 3; }
+      <!-- Danh sách bài viết mẫu -->
+      <div class="post-card">
+        <div class="post-header">
+          <strong>Nguyễn Văn A</strong>
+          <span class="post-time">2 giờ trước</span>
+        </div>
+        <div class="post-content">
+          Hôm nay thời tiết đẹp quá!
+        </div>
+        <div class="post-actions">
+          <button>Thích</button>
+          <button>Bình luận</button>
+          <button>Chia sẻ</button>
+        </div>
+      </div>
 
-    // Tính điểm trung bình môn
-    const cellDTB = row.querySelector('.dtb');
-    if (tongHeSo > 0) {
-        const dtb = tongDiemHS1 / tongHeSo;
-        cellDTB.innerText = dtb.toFixed(1); // Làm tròn 1 chữ số thập phân
-    } else {
-        cellDTB.innerText = "-";
-    }
-}
+    </main>
 
-function luuDiem() {
-    alert("Mô phỏng: Đã lưu điểm thành công vào hệ thống!");
-}
-</script>
+  </div>
 
 </body>
 </html>
