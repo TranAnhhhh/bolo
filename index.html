@@ -1,61 +1,331 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mạng xã hội demo</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerZone - Web Chơi Game Online</title>
+    <style>
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER & NAVBAR --- */
+        header {
+            background-color: #1e293b;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #38bdf8;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #38bdf8;
+            padding-left: 0.5rem;
+        }
+
+        /* --- GAME GRID --- */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .game-card {
+            background-color: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.3);
+        }
+
+        .game-thumb {
+            width: 100%;
+            height: 150px;
+            background-color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .game-info {
+            padding: 1rem;
+        }
+
+        .game-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-play {
+            display: inline-block;
+            width: 100%;
+            padding: 0.5rem;
+            background-color: #0284c7;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-play:hover {
+            background-color: #0369a1;
+        }
+
+        /* --- GAME PLAY AREA --- */
+        #play-area {
+            display: none;
+            background-color: #1e293b;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .btn-close {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            float: right;
+            font-weight: bold;
+        }
+
+        /* --- TIC TAC TOE GAME STYLES --- */
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+            justify-content: center;
+            margin: 1.5rem auto;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .cell:hover {
+            background-color: #475569;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1e293b;
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Thanh điều hướng phía trên (Header/Navbar) -->
-  <header class="navbar">
-    <div class="logo">MySocial</div>
-    <input type="text" class="search-bar" placeholder="Tìm kiếm...">
-    <div class="user-menu">Trang cá nhân</div>
-  </header>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">🎮 GamerZone</div>
+    </header>
 
-  <!-- Bố cục chính (Main Layout) -->
-  <div class="container">
-    
-    <!-- Cột bên trái: Menu điều hướng -->
-    <aside class="sidebar-left">
-      <ul>
-        <li>Bảng tin</li>
-        <li>Bạn bè</li>
-        <li>Nhóm</li>
-        <li>Cài đặt</li>
-      </ul>
-    </aside>
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        
+        <!-- KHU VỰC KHUNG CHƠI GAME (MẶC ĐỊNH ẨN) -->
+        <div id="play-area">
+            <button class="btn-close" onclick="closeGame()">❌ Đóng Game</button>
+            <h2 id="current-game-title" style="margin-bottom: 1rem;">Tên Game</h2>
+            
+            <!-- Khung chứa Game Lập Trình (Tic Tac Toe) -->
+            <div id="custom-game-container" style="display: none;">
+                <p id="status-text" style="font-size: 1.2rem; margin-bottom: 1rem;">Lượt của: X</p>
+                <div class="board" id="board">
+                    <div class="cell" onclick="makeMove(this, 0)"></div>
+                    <div class="cell" onclick="makeMove(this, 1)"></div>
+                    <div class="cell" onclick="makeMove(this, 2)"></div>
+                    <div class="cell" onclick="makeMove(this, 3)"></div>
+                    <div class="cell" onclick="makeMove(this, 4)"></div>
+                    <div class="cell" onclick="makeMove(this, 5)"></div>
+                    <div class="cell" onclick="makeMove(this, 6)"></div>
+                    <div class="cell" onclick="makeMove(this, 7)"></div>
+                    <div class="cell" onclick="makeMove(this, 8)"></div>
+                </div>
+                <button class="btn-play" style="width: auto; padding: 0.5rem 2rem;" onclick="resetTicTacToe()">Chơi Lại</button>
+            </div>
 
-    <!-- Cột giữa: Bảng tin chính -->
-    <main class="feed">
-      
-      <!-- Khung tạo bài viết mới -->
-      <div class="create-post-card">
-        <textarea placeholder="Bạn đang nghĩ gì?"></textarea>
-        <button class="btn-post">Đăng bài</button>
-      </div>
-
-      <!-- Danh sách bài viết mẫu -->
-      <div class="post-card">
-        <div class="post-header">
-          <strong>Nguyễn Văn A</strong>
-          <span class="post-time">2 giờ trước</span>
+            <!-- Khung chứa Game Nhúng (Iframe) -->
+            <div id="iframe-game-container" style="display: none;">
+                <iframe id="game-iframe" src="" width="100%" height="600px" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="post-content">
-          Hôm nay thời tiết đẹp quá!
+
+        <!-- DANH SÁCH GAME -->
+        <h2 class="section-title">Game Nổi Bật</h2>
+        <div class="game-grid">
+            
+            <!-- Card Game 1 -->
+            <div class="game-card" onclick="playTicTacToe()">
+                <div class="game-thumb">❌⭕</div>
+                <div class="game-info">
+                    <div class="game-title">Cờ Caro (Tic Tac Toe)</div>
+                    <button class="btn-play">Chơi Ngay</button>
+                </div>
+            </div>
+
+            <!-- Card Game 2 -->
+            <div class="game-card" onclick="playIframeGame('Đua Xe 3D', 'https://play.famobi.com/3d-car-simulator')">
+                <div class="game-thumb">🏎️</div>
+                <div class="game-info">
+                    <div class="game-title">Đua Xe 3D (HTML5)</div>
+                    <button class="btn-play">Chơi Ngay</button>
+                </div>
+            </div>
+
         </div>
-        <div class="post-actions">
-          <button>Thích</button>
-          <button>Bình luận</button>
-          <button>Chia sẻ</button>
-        </div>
-      </div>
+    </div>
 
-    </main>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 GamerZone. Web Game Mini HTML5.</p>
+    </footer>
 
-  </div>
+    <!-- JAVASCRIPT ĐIỀU KHIỂN -->
+    <script>
+        const playArea = document.getElementById('play-area');
+        const customGameContainer = document.getElementById('custom-game-container');
+        const iframeGameContainer = document.getElementById('iframe-game-container');
+        const currentGameTitle = document.getElementById('current-game-title');
+        const gameIframe = document.getElementById('game-iframe');
 
+        // Hàm mở game nhúng (Iframe)
+        function playIframeGame(title, url) {
+            currentGameTitle.innerText = title;
+            gameIframe.src = url;
+            
+            customGameContainer.style.display = 'none';
+            iframeGameContainer.style.display = 'block';
+            playArea.style.display = 'block';
+            playArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Hàm mở Game Cờ Caro
+        function playTicTacToe() {
+            currentGameTitle.innerText = "Cờ Caro 3x3";
+            iframeGameContainer.style.display = 'none';
+            customGameContainer.style.display = 'block';
+            playArea.style.display = 'block';
+            resetTicTacToe();
+            playArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Hàm đóng game
+        function closeGame() {
+            playArea.style.display = 'none';
+            gameIframe.src = "";
+        }
+
+        /* --- LOGIC GAME TIC TAC TOE --- */
+        let currentPlayer = 'X';
+        let boardState = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Hàng ngang
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Hàng dọc
+            [0, 4, 8], [2, 4, 6]             // Đường chéo
+        ];
+
+        function makeMove(cell, index) {
+            if (boardState[index] !== '' || !gameActive) return;
+
+            boardState[index] = currentPlayer;
+            cell.innerText = currentPlayer;
+            cell.style.color = currentPlayer === 'X' ? '#38bdf8' : '#ef4444';
+
+            checkResult();
+        }
+
+        function checkResult() {
+            let roundWon = false;
+            for (let i = 0; i < winningConditions.length; i++) {
+                const [a, b, c] = winningConditions[i];
+                if (boardState[a] && boardState[a] === boardState[b] && boardState[a] === boardState[c]) {
+                    roundWon = true;
+                    break;
+                }
+            }
+
+            if (roundWon) {
+                document.getElementById('status-text').innerText = `Người chơi ${currentPlayer} Thắng! 🎉`;
+                gameActive = false;
+                return;
+            }
+
+            if (!boardState.includes('')) {
+                document.getElementById('status-text').innerText = 'Hòa nhau! 🤝';
+                gameActive = false;
+                return;
+            }
+
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            document.getElementById('status-text').innerText = `Lượt của: ${currentPlayer}`;
+        }
+
+        function resetTicTacToe() {
+            currentPlayer = 'X';
+            boardState = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            document.getElementById('status-text').innerText = `Lượt của: X`;
+            document.querySelectorAll('.cell').forEach(cell => cell.innerText = '');
+        }
+    </script>
 </body>
 </html>
